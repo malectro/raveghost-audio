@@ -16,3 +16,25 @@ document.body.addEventListener('click', () => {
     audioNode.pause();
   }
 });
+
+const controls = document.querySelector('.controls');
+audioNode.addEventListener('play', () => {
+  controls.classList.replace('paused', 'playing');
+});
+audioNode.addEventListener('pause', () => {
+  controls.classList.replace('playing', 'paused');
+});
+audioNode.addEventListener('timeupdate', schedulePaint);
+
+let paintScheduled = false;
+const progress = controls.querySelector('.progress');
+function schedulePaint() {
+  if (paintScheduled) {
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    const percent = 100 * audioNode.currentTime / audioNode.duration;
+    progress.style.width = `${percent}%`; 
+  });
+}

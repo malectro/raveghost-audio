@@ -6,6 +6,27 @@
     <script type="module" src="./src/main.js"></script>
   </head>
   <body>
-    <audio src="./media/1.mp3" preload />
+
+    <div class="controls paused">
+      <button class="play">
+        <svg viewBox="0 0 10 10">
+          <path d="M 0,0 10,5 0,10 z" />
+        </svg>
+      </button>
+
+      <button class="pause">
+        <svg viewBox="0 0 10 10">
+          <path d="M 0,0 4,0 4,10, 0,10 z" />
+          <path d="M 6,0 10,0 10,10, 6,10 z" />
+        </svg>
+      </button>
+
+      <div class="timeline">
+        <div class="total"></div>
+        <div class="progress"></div>
+      </div>
+
+      <audio src="./media/1.mp3" preload />
+    </div>
   </body>
 </html>

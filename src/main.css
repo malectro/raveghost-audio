@@ -1,9 +1,84 @@
+:root {
+  --color-fg-primary: white;
+  --color-bg-primary: black;
+  --color-bg-secondary: rgb(30 30 30);
+}
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-size: 8px;
 }
 
 body {
-  background: black;
+  background: var(--color-bg-primary);
+}
+
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  padding: 2rem;
+
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  &.paused {
+    .play {
+      display: flex;
+    }
+    .pause {
+      display: none;
+    }
+  }
+  &.playing {
+    .play {
+      display: none;
+    }
+    .pause {
+      display: flex;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 5rem;
+
+    svg {
+      fill: var(--color-fg-primary);
+    }
+  }
+
+  .timeline {
+    display: flex;
+    flex: 1 0 1px;
+    height: 1rem;
+    position: relative;
+    
+    .total {
+      flex: 1 0 1px;
+      background: var(--color-bg-secondary);
+    }
+
+    .progress {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background: var(--color-fg-primary);
+    }
+  }
 }
