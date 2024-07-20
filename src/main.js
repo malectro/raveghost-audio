@@ -6,20 +6,31 @@ const mediaElementSource = context.createMediaElementSource(audioNode);
 
 mediaElementSource.connect(context.destination);
 
-console.log('registering');
-document.body.addEventListener('click', () => {
-  console.log('starting');
-  context.resume();
+function playPause() {
   if (audioNode.paused) {
+    context.resume();
     audioNode.play();
   } else {
     audioNode.pause();
   }
+}
+
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    playPause();
+  }
 });
 
 const controls = document.querySelector('.controls');
+controls.querySelector('.play').addEventListener('click', () => {
+  context.resume();
+  audioNode.play();
+});
 audioNode.addEventListener('play', () => {
   controls.classList.replace('paused', 'playing');
+});
+controls.querySelector('.pause').addEventListener('click', () => {
+  audioNode.pause();
 });
 audioNode.addEventListener('pause', () => {
   controls.classList.replace('playing', 'paused');

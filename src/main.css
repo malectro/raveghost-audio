@@ -59,6 +59,13 @@ body {
 
     svg {
       fill: var(--color-fg-primary);
+      transition: transform 0.2s;
+    }
+
+    @media(hover: hover) {
+      &:hover svg {
+        transform: scale(1.1); 
+      }
     }
   }
 
